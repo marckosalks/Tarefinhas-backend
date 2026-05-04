@@ -9,6 +9,6 @@ dotnet run
 http://localhost:5287/swagger/index.html
 
 
-## caso não tenha dotnet instalado acessar api por aqui:
+## caso não tenha dotnet instalado acessar doc nesse link:
 
 https://tarefinhas-backend.onrender.com/swagger/index.html
