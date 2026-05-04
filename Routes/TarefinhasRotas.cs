@@ -9,6 +9,7 @@ public static class TarefinhasRotas
 {
     public static void getTarefinhasRoutes(this WebApplication app)
     {
+        app.MapGet("/", () => "API Tarefinhas rodando 🚀");
         //prefixo -- como no Laravel
         var route = app.MapGroup("v1/tarefinha");
 
