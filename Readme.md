@@ -7,3 +7,8 @@ dotnet run
 
 ### Swagger para entender como funciona os metodos da api e seus retornos 📗; 
 http://localhost:5287/swagger/index.html
+
+
+## caso não tenha dotnet instalado acessar api por aqui:
+
+(https://tarefinhas-backend.onrender.com/swagger/index.html)
