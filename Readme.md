@@ -11,4 +11,4 @@ http://localhost:5287/swagger/index.html
 
 ## caso não tenha dotnet instalado acessar api por aqui:
 
-(https://tarefinhas-backend.onrender.com/swagger/index.html)
+https://tarefinhas-backend.onrender.com/swagger/index.html
