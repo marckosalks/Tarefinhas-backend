@@ -1,4 +1,4 @@
-﻿namespace Tarefinhas.Models;
+namespace Tarefinhas.Models;
 
 public class TarefinhasModel
 {
@@ -19,5 +19,7 @@ public class TarefinhasModel
       Title = newTitle;
       Description = newDescription;
     }
+
+    public bool Concluida { get; set; }
 
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tarefinhas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa1a6f27682f5823629a85cb94ebbf66af179f36")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tarefinhas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tarefinhas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

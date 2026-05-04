@@ -12,54 +12,60 @@ public static class TarefinhasRotas
         //prefixo -- como no Laravel
         var route = app.MapGroup("v1/tarefinha");
 
-        route.MapPost("", 
+        route.MapPost(
+            "",
             async (TarefinhasRequest req, TarefinhasContext context) =>
             {
                 var tarefinha = new TarefinhasModel(req.title, req.description);
                 await context.Tarefinhas.AddAsync(tarefinha);
+
                 //salvamos no banco de dados
                 await context.SaveChangesAsync();
-            });
+            }
+        );
 
-        route.MapGet("", async (TarefinhasContext context) =>
-        {
-            var tarefinhas = await context.Tarefinhas.ToListAsync();
-            return Results.Ok(tarefinhas);
-        });
-        
-        route.MapPut("{id:guid}", 
-            async (Guid id,TarefinhasRequest req, TarefinhasContext context) =>
+        route.MapGet(
+            "",
+            async (TarefinhasContext context) =>
             {
-                //id
-                var tarefinha = await context.Tarefinhas.
-                    FirstOrDefaultAsync(x => x.Id == id);
-                
-                
-                //verificar se esse id existe no banco
-                
-                 
+                var tarefinhas = await context.Tarefinhas.ToListAsync();
+                return Results.Ok(tarefinhas);
+            }
+        );
 
-                if (tarefinha.Title != req.title || tarefinha.Description != req.description)
-                {
-                    tarefinha.ChangeTitleorDescription(req.title, req.description);
-                    await context.SaveChangesAsync();
-                    
-                }
-                
-                return Results.Ok("Tarefinha Atualizado!");
-            });
-        route.MapDelete("{id:guid}", 
-            async(Guid id,TarefinhasContext context) =>
+        route.MapPut(
+            "{id:guid}",
+            async (Guid id, TarefinhasRequest req, TarefinhasContext context) =>
             {
-                var tarefinha = await context.Tarefinhas.FirstAsync(x => x.Id == id);
+                var tarefinha = await context.Tarefinhas.FirstOrDefaultAsync(x => x.Id == id);
 
-                if (tarefinha != null)
+                if (tarefinha is null)
                 {
-                    context.Tarefinhas.Remove(tarefinha);
-                    await context.SaveChangesAsync();
+                    return Results.NotFound("Tarefinha não encontrada");
                 }
-                
+
+                tarefinha.ChangeTitleorDescription(req.title, req.description);
+                await context.SaveChangesAsync();
+
+                return Results.Ok("Tarefinha Atualizada!");
+            }
+        );
+        route.MapDelete(
+            "{id:guid}",
+            async (Guid id, TarefinhasContext context) =>
+            {
+                var tarefinha = await context.Tarefinhas.FirstOrDefaultAsync(x => x.Id == id);
+
+                if (tarefinha is null)
+                {
+                    return Results.NotFound("Tarefinha não encontrada");
+                }
+
+                context.Tarefinhas.Remove(tarefinha);
+                await context.SaveChangesAsync();
+
                 return Results.NoContent();
-            });
+            }
+        );
     }
 }

@@ -1,5 +1,8 @@
 using Tarefinhas.Data;
 using Tarefinhas.Routes;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,5 +36,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.getTarefinhasRoutes();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<TarefinhasContext>();
+    db.Database.Migrate();
+}
 
 app.Run();
