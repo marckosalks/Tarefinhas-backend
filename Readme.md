@@ -5,5 +5,5 @@
 ## Para rodar a api:
 dotnet run
 
-### Abaixo temos o Swagger para entender como funciona os metodos da api e seus retornos 📗; 
+### Swagger para entender como funciona os metodos da api e seus retornos 📗; 
 http://localhost:5287/swagger/index.html
